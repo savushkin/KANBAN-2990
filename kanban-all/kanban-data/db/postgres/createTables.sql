@@ -43,8 +43,8 @@ CREATE TABLE board (
   name          TEXT NOT NULL,
   description   TEXT NOT NULL,
   creation_date DATE NOT NULL,
-  owner         INT  NOT NULL,
-  FOREIGN KEY (owner) REFERENCES kanban_user (id)
+  owner_id         INT  NOT NULL,
+  FOREIGN KEY (owner_id) REFERENCES kanban_user (id)
 );
 
 CREATE TABLE board_permission (
@@ -74,13 +74,13 @@ CREATE TABLE board_column (
 CREATE TABLE task (
   id              BIGSERIAL PRIMARY KEY,
   title           TEXT   NOT NULL,
-  decription      TEXT,
+  description      TEXT,
   creation_date   DATE   NOT NULL,
   estimated_time  DATE,
   spent_time      DATE,
-  owner           INT    NOT NULL,
+  owner_id           INT    NOT NULL,
   board_column_id BIGINT NOT NULL,
-  FOREIGN KEY (owner) REFERENCES kanban_user (id),
+  FOREIGN KEY (owner_id) REFERENCES kanban_user (id),
   FOREIGN KEY (board_column_id) REFERENCES board_column (id)
 );
 
