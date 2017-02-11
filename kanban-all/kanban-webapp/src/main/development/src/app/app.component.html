@@ -1,0 +1,27 @@
+<template #itemTemplate let-item="item" let-index="index">{{index}}: {{item.value.name}}</template>
+
+<header class="kb-header">
+  <h1 class="kb-header__title">
+    <img src="{{logo}}" class="kb-header__title__logo"/>
+    <span class="kb-header__title__text">{{title}}</span>
+  </h1>
+</header>
+<main class="kb-main">
+  <div class="kb-type">
+    <h2 class="kb-type__title">Имя типа</h2>
+    <bs-sortable
+      [(ngModel)]="itemObjects1"
+      [itemTemplate]="itemTemplate"
+      itemClass="kb-type__list__item"
+      itemActiveClass="sortable-item-active"
+      placeholderItem="Переместите сюда"
+      placeholderClass="placeholderStyle"
+      wrapperClass="kb-type__list"
+    ></bs-sortable>
+  </div>
+</main>
+<footer class="kb-footer">
+
+</footer>
+
+
