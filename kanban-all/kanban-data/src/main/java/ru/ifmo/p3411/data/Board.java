@@ -1,5 +1,9 @@
 package ru.ifmo.p3411.data;
 
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.id.enhanced.SequenceStyleGenerator;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;

@@ -1,6 +1,7 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "task_user")
-public class TaskUser {
+public class TaskUser implements Serializable{
 
     @Id
     @ManyToOne

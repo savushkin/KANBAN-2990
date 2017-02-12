@@ -1,6 +1,7 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
@@ -11,11 +12,14 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "system_user")
-public class SystemUser {
+public class SystemUser implements Serializable{
 
     @Id
+    @GeneratedValue
+    private Integer kanbanUserId;
+
     @OneToOne
-    @PrimaryKeyJoinColumn(name = "kanban_user")
+    @PrimaryKeyJoinColumn
     private KanbanUser kanbanUser;
 
     @Column(name = "email", nullable = false)
@@ -32,6 +36,14 @@ public class SystemUser {
             @JoinColumn(name = "system_user_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "system_permission_id", nullable = false)})
     private Set<SystemPermission> systemPermissions;
+
+    public Integer getKanbanUserId() {
+        return kanbanUserId;
+    }
+
+    public void setKanbanUserId(Integer kanbanUserId) {
+        this.kanbanUserId = kanbanUserId;
+    }
 
     public KanbanUser getKanbanUser() {
         return kanbanUser;
@@ -71,22 +83,5 @@ public class SystemUser {
 
     public void setSystemPermissions(Set<SystemPermission> systemPermissions) {
         this.systemPermissions = systemPermissions;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SystemUser that = (SystemUser) o;
-        return Objects.equals(kanbanUser, that.kanbanUser) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(passwordHash, that.passwordHash) &&
-                Objects.equals(registrationDate, that.registrationDate) &&
-                Objects.equals(systemPermissions, that.systemPermissions);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(kanbanUser, email, passwordHash, registrationDate, systemPermissions);
     }
 }
