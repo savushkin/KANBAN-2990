@@ -1,9 +1,11 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * Created by Ellepsis on 11.02.2017.
+ * @author Ellepsis
+ * @since 1.0
  */
 @Entity
 @Table(name = "kanban_user")
@@ -65,5 +67,22 @@ public class KanbanUser {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        KanbanUser that = (KanbanUser) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(username, that.username) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(secondName, that.secondName) &&
+                Objects.equals(lastName, that.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, firstName, secondName, lastName);
     }
 }

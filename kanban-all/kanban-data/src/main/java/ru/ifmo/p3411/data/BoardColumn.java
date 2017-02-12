@@ -1,9 +1,11 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * Created by Ellepsis on 12.02.2017.
+ * @author Ellepsis
+ * @since 1.0
  */
 @Entity
 @Table(name = "board_column")
@@ -55,5 +57,21 @@ public class BoardColumn {
 
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BoardColumn that = (BoardColumn) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(board, that.board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, board);
     }
 }

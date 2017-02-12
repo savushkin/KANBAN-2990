@@ -1,9 +1,12 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * Created by Ellepsis on 12.02.2017.
+ *
+ * @author Ellepsis
+ * @since 1.0
  */
 @Entity
 @Table(name = "board_permission")
@@ -43,5 +46,20 @@ public class BoardPermission {
 
     public void setPermission(String permission) {
         this.permission = permission;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BoardPermission that = (BoardPermission) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(permission, that.permission);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, description, permission);
     }
 }

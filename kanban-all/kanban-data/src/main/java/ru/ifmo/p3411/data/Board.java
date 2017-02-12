@@ -1,10 +1,11 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Objects;
 
 /**
- * Created by Ellepsis on 11.02.2017.
+ * @author Ellepsis
+ * @since 1.0
  */
 @Entity
 @Table(name = "board")
@@ -67,5 +68,22 @@ public class Board {
 
     public void setOwner(KanbanUser owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return Objects.equals(id, board.id) &&
+                Objects.equals(name, board.name) &&
+                Objects.equals(description, board.description) &&
+                Objects.equals(creation_date, board.creation_date) &&
+                Objects.equals(owner, board.owner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, creation_date, owner);
     }
 }

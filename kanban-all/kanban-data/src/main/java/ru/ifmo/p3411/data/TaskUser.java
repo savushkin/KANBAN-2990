@@ -1,9 +1,11 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * Created by Ellepsis on 12.02.2017.
+ * @author Ellepsis
+ * @since 1.0
  */
 @Entity
 @Table(name = "task_user")
@@ -44,5 +46,20 @@ public class TaskUser {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskUser taskUser = (TaskUser) o;
+        return Objects.equals(task, taskUser.task) &&
+                Objects.equals(kanbanUser, taskUser.kanbanUser) &&
+                Objects.equals(comment, taskUser.comment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(task, kanbanUser, comment);
     }
 }

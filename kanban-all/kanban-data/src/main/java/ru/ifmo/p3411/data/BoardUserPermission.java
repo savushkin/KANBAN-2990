@@ -1,9 +1,11 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
- * Created by Ellepsis on 12.02.2017.
+ * @author Ellepsis
+ * @since 1.0
  */
 @Entity
 @Table(name = "board_user_permission")
@@ -22,4 +24,43 @@ public class BoardUserPermission {
     @ManyToOne
     @JoinColumn(name = "board_permission_id")
     private BoardPermission boardPermission;
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public KanbanUser getKanbanUser() {
+        return kanbanUser;
+    }
+
+    public void setKanbanUser(KanbanUser kanbanUser) {
+        this.kanbanUser = kanbanUser;
+    }
+
+    public BoardPermission getBoardPermission() {
+        return boardPermission;
+    }
+
+    public void setBoardPermission(BoardPermission boardPermission) {
+        this.boardPermission = boardPermission;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BoardUserPermission that = (BoardUserPermission) o;
+        return Objects.equals(board, that.board) &&
+                Objects.equals(kanbanUser, that.kanbanUser) &&
+                Objects.equals(boardPermission, that.boardPermission);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(board, kanbanUser, boardPermission);
+    }
 }
