@@ -10,8 +10,24 @@
 
     <packaging>pom</packaging>
 
-    <dependencyManagement>
+    <properties>
+        <spring.data.version>1.11.0.RELEASE</spring.data.version>
+        <hibernate.version>5.2.7.Final</hibernate.version>
+    </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring.data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <modules>
