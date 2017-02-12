@@ -1,7 +1,12 @@
 package ru.ifmo.p3411.data;
 
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.id.enhanced.SequenceStyleGenerator;
+
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author Ellepsis
@@ -29,6 +34,9 @@ public class Board {
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
     private KanbanUser owner;
+
+    @OneToMany(mappedBy = "board")
+    private Set<BoardUserPermission> boardUserPermissionSet;
 
     public Integer getId() {
         return id;
@@ -70,6 +78,14 @@ public class Board {
         this.owner = owner;
     }
 
+    public Set<BoardUserPermission> getBoardUserPermissionSet() {
+        return boardUserPermissionSet;
+    }
+
+    public void setBoardUserPermissionSet(Set<BoardUserPermission> boardUserPermissionSet) {
+        this.boardUserPermissionSet = boardUserPermissionSet;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,11 +95,12 @@ public class Board {
                 Objects.equals(name, board.name) &&
                 Objects.equals(description, board.description) &&
                 Objects.equals(creation_date, board.creation_date) &&
-                Objects.equals(owner, board.owner);
+                Objects.equals(owner, board.owner) &&
+                Objects.equals(boardUserPermissionSet, board.boardUserPermissionSet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, creation_date, owner);
+        return Objects.hash(id, name, description, creation_date, owner, boardUserPermissionSet);
     }
 }

@@ -1,6 +1,7 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "board_user_permission")
-public class BoardUserPermission {
+public class BoardUserPermission implements Serializable{
 
     @Id
     @ManyToOne
