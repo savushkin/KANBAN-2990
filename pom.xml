@@ -17,6 +17,7 @@
         <mavenSource.version>3.0.0</mavenSource.version>
         <mavenSurfire.version>2.18.1</mavenSurfire.version>
         <spring.data.version>1.11.0.RELEASE</spring.data.version>
+        <spring.data.rest.version>2.6.0.RELEASE</spring.data.rest.version>
         <hibernate.version>5.2.7.Final</hibernate.version>
         <spring.boot.version>1.5.1.RELEASE</spring.boot.version>
         <kanban.version>1.0-SNAPSHOT</kanban.version>
@@ -34,6 +35,11 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring.data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-rest-webmvc</artifactId>
+                <version>${spring.data.rest.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
