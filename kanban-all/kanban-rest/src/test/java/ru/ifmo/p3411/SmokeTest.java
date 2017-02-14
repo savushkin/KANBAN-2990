@@ -36,7 +36,6 @@ public class SmokeTest {
     @Autowired
     private KanbanUserRepository userRepository;
 
-
     @Autowired
     private TestRestTemplate restTemplate;
 
