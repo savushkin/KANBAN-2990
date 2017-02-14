@@ -44,6 +44,11 @@ public class SmokeTest {
         KanbanUser expected = new KanbanUser("uname", "fname", null, "lname");
         expected = userRepository.save(expected);
         KanbanUser actual = restTemplate.getForObject("/kanbanUsers/" + expected.getId(), KanbanUser.class);
-        Assert.assertEquals("REST works OK", expected, actual);
+        Assert.assertEquals("REST GET works OK", expected, actual);
+
+        expected.setUsername("changed");
+        restTemplate.put("/kanbanUsers/" + expected.getId(), expected);
+        actual = userRepository.findOne(expected.getId());
+        Assert.assertEquals("REST PUT works OK", expected, actual);
     }
 }
