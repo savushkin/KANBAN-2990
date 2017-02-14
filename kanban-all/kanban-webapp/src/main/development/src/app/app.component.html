@@ -1,27 +1,25 @@
-<template #itemTemplate let-item="item" let-index="index">{{index}}: {{item.value.name}}</template>
+<nav class="navbar navbar-inverse bg-primary fixed-top">
+  <a class="navbar-brand" href="#">
+    <img src="{{logo}}" width="30" height="30" class="d-inline-block align-top" alt="">
+    {{title}}
+  </a>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Features</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+</nav>
+<header>
 
-<header class="kb-header">
-  <h1 class="kb-header__title">
-    <img src="{{logo}}" class="kb-header__title__logo"/>
-    <span class="kb-header__title__text">{{title}}</span>
-  </h1>
 </header>
-<main class="kb-main">
-  <div class="kb-type">
-    <h2 class="kb-type__title">Имя типа</h2>
-    <bs-sortable
-      [(ngModel)]="itemObjects1"
-      [itemTemplate]="itemTemplate"
-      itemClass="kb-type__list__item"
-      itemActiveClass="sortable-item-active"
-      placeholderItem="Переместите сюда"
-      placeholderClass="placeholderStyle"
-      wrapperClass="kb-type__list"
-    ></bs-sortable>
-  </div>
-</main>
-<footer class="kb-footer">
-
-</footer>
 
 
