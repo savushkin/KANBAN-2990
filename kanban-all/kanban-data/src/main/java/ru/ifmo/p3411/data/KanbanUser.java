@@ -29,6 +29,16 @@ public class KanbanUser {
     @Column(name = "last_name")
     private String lastName;
 
+    public KanbanUser() {
+    }
+
+    public KanbanUser(String username, String firstName, String secondName, String lastName) {
+        this.username = username;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.lastName = lastName;
+    }
+
     public Integer getId() {
         return id;
     }
