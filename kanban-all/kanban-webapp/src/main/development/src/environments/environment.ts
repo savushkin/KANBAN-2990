@@ -4,5 +4,17 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  host: 'http://localhost:8080/',
+  context: 'rest/',
+  links: '',
+
+  kanbanUsers: {
+    all: 'kanbanUsers/',
+    create: 'kanbanUsers/',
+    one: 'kanbanUsers/',
+    update: 'kanbanUsers/',
+    delete: 'kanbanUsers/'
+
+  }
 };

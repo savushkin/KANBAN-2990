@@ -1,17 +1,25 @@
 import { Component } from '@angular/core';
+import {KanbanUserService} from "./_service/kanban-user.service";
+import {KanbanUser} from "./_model/kanbanUser";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [
+    KanbanUserService
+  ]
 })
 export class AppComponent {
-  title = 'KanBan 2990';
-  logo = '/assets/img/kanban.png';
-
-  itemObjects1: any[] = [
-    { id: 1, name: 'Windstorm' },
-    { id: 2, name: 'Bombasto' },
-    { id: 3, name: 'Magneta' }
-  ];
+  constructor(private kanbanUserService:KanbanUserService) {
+    // let kanbanUser = new KanbanUser;
+    // kanbanUser.firstName = 'firstName';
+    // kanbanUser.lastName = 'lastName';
+    // kanbanUser.secondName = 'secondName';
+    // kanbanUser.username = 'mishka1';
+    //
+    // this.kanbanUserService.create(kanbanUser).subscribe(resp => {
+    //   console.log(resp);
+    // })
+  }
 }
