@@ -97,7 +97,7 @@ public class KanbanRest implements CommandLineRunner {
         boardColumn11 = boardColumnRepository.save(boardColumn11);
         boardColumn12 = boardColumnRepository.save(boardColumn12);
 
-        Task task1 = new Task("Заголовок 1", "описание описание описание описание", LocalDateTime.now(), LocalDateTime.now(),
-                LocalDateTime.now(), kanbanUser1, boardColumn1, Collections.<TaskUser>emptySet());
+        Task task1 = new Task("Заголовок 1", "описание описание описание описание", new Timestamp(new Date().getTime()), new Timestamp(new Date().getTime()),
+                new Timestamp(new Date().getTime()), kanbanUser1, boardColumn1, Collections.<TaskUser>emptySet());
     }
 }
