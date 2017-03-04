@@ -45,6 +45,21 @@ public class Task {
     @OneToMany(mappedBy = "task")
     private Set<TaskUser> taskUser;
 
+    public Task() {
+    }
+
+    public Task(String title, String description, LocalDateTime creationDate, LocalDateTime estimatedTime, LocalDateTime spentTime,
+                KanbanUser owner, BoardColumn boardColumn, Set<TaskUser> taskUser) {
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.estimatedTime = estimatedTime;
+        this.spentTime = spentTime;
+        this.owner = owner;
+        this.boardColumn = boardColumn;
+        this.taskUser = taskUser;
+    }
+
     public Integer getId() {
         return id;
     }
