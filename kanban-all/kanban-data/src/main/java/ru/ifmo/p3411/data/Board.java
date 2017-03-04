@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * @author Ellepsis
- * @since 1.0
+* @since 1.0
  */
 @Entity
 @Table(name = "board")
