@@ -1,5 +1,6 @@
 package ru.ifmo.p3411.data;
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ public class Board {
     private String description;
 
     @Column(name = "creation_date", nullable = false)
-    private String creation_date;
+    private Timestamp creation_date;
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
@@ -32,6 +33,17 @@ public class Board {
 
     @OneToMany(mappedBy = "board")
     private Set<BoardUserPermission> boardUserPermissionSet;
+
+    public Board() {
+    }
+
+    public Board(String name, String description, Timestamp creation_date, KanbanUser owner, Set<BoardUserPermission> boardUserPermissionSet) {
+        this.name = name;
+        this.description = description;
+        this.creation_date = creation_date;
+        this.owner = owner;
+        this.boardUserPermissionSet = boardUserPermissionSet;
+    }
 
     public Integer getId() {
         return id;
@@ -57,11 +69,11 @@ public class Board {
         this.description = description;
     }
 
-    public String getCreation_date() {
+    public Timestamp getCreation_date() {
         return creation_date;
     }
 
-    public void setCreation_date(String creation_date) {
+    public void setCreation_date(Timestamp creation_date) {
         this.creation_date = creation_date;
     }
 

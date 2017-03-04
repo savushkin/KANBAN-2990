@@ -27,6 +27,15 @@ public class BoardColumn {
     @JoinColumn(name = "board_id", nullable = false)
     private Board board;
 
+    public BoardColumn() {
+    }
+
+    public BoardColumn(String name, String description, Board board) {
+        this.name = name;
+        this.description = description;
+        this.board = board;
+    }
+
     public Long getId() {
         return id;
     }
