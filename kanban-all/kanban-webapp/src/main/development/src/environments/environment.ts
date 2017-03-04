@@ -6,15 +6,20 @@
 export const environment = {
   production: false,
   host: 'http://localhost:8080/',
-  context: 'rest/',
+  context: '/',
   links: '',
-
   kanbanUsers: {
     all: 'kanbanUsers/',
     create: 'kanbanUsers/',
     one: 'kanbanUsers/',
     update: 'kanbanUsers/',
     delete: 'kanbanUsers/'
-
-  }
+  },
+  board: {
+    all: 'boards/',
+    create: 'boards/',
+    one: 'boards/',
+    update: 'boards/',
+    delete: 'boards/'
+  },
 };
