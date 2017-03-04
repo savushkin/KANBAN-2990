@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import ru.ifmo.p3411.data.*;
 import ru.ifmo.p3411.repositories.BoardColumnRepository;
 import ru.ifmo.p3411.repositories.BoardRepository;
 import ru.ifmo.p3411.repositories.KanbanUserRepository;
-import ru.ifmo.p3411.repositories.TaskRepository;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -24,26 +24,18 @@ import java.util.List;
 @SpringBootApplication
 public class KanbanRest implements CommandLineRunner {
 
-    @Autowired
-    public KanbanRest(KanbanUserRepository kanbanUserRepository, BoardRepository boardRepository, BoardColumnRepository boardColumnRepository, TaskRepository taskRepository) {
-        this.kanbanUserRepository = kanbanUserRepository;
-        this.boardRepository = boardRepository;
-        this.boardColumnRepository = boardColumnRepository;
-        this.taskRepository = taskRepository;
-    }
-
     public static void main(String... args) {
         SpringApplication.run(KanbanRest.class, args);
     }
 
-    private final KanbanUserRepository kanbanUserRepository;
+    @Autowired
+    private KanbanUserRepository kanbanUserRepository;
 
-    private final BoardRepository boardRepository;
+    @Autowired
+    private BoardRepository boardRepository;
 
-    private final BoardColumnRepository boardColumnRepository;
-
-    private final TaskRepository taskRepository;
-
+    @Autowired
+    private BoardColumnRepository boardColumnRepository;
 
     public void run(String... strings) throws Exception {
         KanbanUser kanbanUser1 = new KanbanUser("ilya", "Илья", "Эдуардович", "Михайлов");
@@ -56,18 +48,17 @@ public class KanbanRest implements CommandLineRunner {
         kanbanUser3 = kanbanUserRepository.save(kanbanUser3);
         kanbanUser4 = kanbanUserRepository.save(kanbanUser4);
 
-        Timestamp creationDate = new Timestamp(new Date().getTime());
         Board board1 = new Board("Доска Ильи", "Канбан Доска Ильи",
-                creationDate, kanbanUser1, Collections.<BoardUserPermission>emptySet());
+                new Timestamp(new Date().getTime()), kanbanUser1, Collections.<BoardUserPermission>emptySet());
 
         Board board2 = new Board("Доска Влада", "Канбан Доска Влада",
-                creationDate, kanbanUser2, Collections.<BoardUserPermission>emptySet());
+                new Timestamp(new Date().getTime()), kanbanUser2, Collections.<BoardUserPermission>emptySet());
 
         Board board3 = new Board("Доска Ивана", "Канбан Доска Ивана",
-                creationDate, kanbanUser3, Collections.<BoardUserPermission>emptySet());
+                new Timestamp(new Date().getTime()), kanbanUser3, Collections.<BoardUserPermission>emptySet());
 
         Board board4 = new Board("Доска Егора", "Канбан Доска Егора",
-                creationDate, kanbanUser4, Collections.<BoardUserPermission>emptySet());
+                new Timestamp(new Date().getTime()), kanbanUser4, Collections.<BoardUserPermission>emptySet());
 
         board1 = boardRepository.save(board1);
 
@@ -106,14 +97,7 @@ public class KanbanRest implements CommandLineRunner {
         boardColumn11 = boardColumnRepository.save(boardColumn11);
         boardColumn12 = boardColumnRepository.save(boardColumn12);
 
-        List<Board> allBoardForUser = boardRepository.getAllBoardForUser(kanbanUser1);
-
-
-        Task task1 = new Task("Заголовок 1", "описание описание описание описание", creationDate, creationDate,
-                creationDate, kanbanUser1, boardColumn1, Collections.<TaskUser>emptySet());
-        taskRepository.save(task1);
-        List<Task> allTaskByBoardColumn = taskRepository.getAllTaskByBoardColumn(boardColumn1);
-        List<BoardColumn> allBoardColumnForBoard = boardColumnRepository.getAllBoardColumnForBoard(board1);
-        return;
+        Task task1 = new Task("Заголовок 1", "описание описание описание описание", LocalDateTime.now(), LocalDateTime.now(),
+                LocalDateTime.now(), kanbanUser1, boardColumn1, Collections.<TaskUser>emptySet());
     }
 }
