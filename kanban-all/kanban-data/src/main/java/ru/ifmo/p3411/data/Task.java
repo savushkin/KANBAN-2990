@@ -1,7 +1,7 @@
 package ru.ifmo.p3411.data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,13 +26,13 @@ public class Task {
     private String description;
 
     @Column(name = "creation_date", nullable = false)
-    private LocalDateTime creationDate;
+    private Timestamp creationDate;
 
     @Column(name = "estimated_time")
-    private LocalDateTime estimatedTime;
+    private Timestamp estimatedTime;
 
     @Column(name = "spent_time")
-    private LocalDateTime spentTime;
+    private Timestamp spentTime;
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
@@ -48,7 +48,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(String title, String description, LocalDateTime creationDate, LocalDateTime estimatedTime, LocalDateTime spentTime,
+    public Task(String title, String description, Timestamp creationDate, Timestamp estimatedTime, Timestamp spentTime,
                 KanbanUser owner, BoardColumn boardColumn, Set<TaskUser> taskUser) {
         this.title = title;
         this.description = description;
@@ -84,27 +84,27 @@ public class Task {
         this.description = description;
     }
 
-    public LocalDateTime getCreationDate() {
+    public Timestamp getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
     }
 
-    public LocalDateTime getEstimatedTime() {
+    public Timestamp getEstimatedTime() {
         return estimatedTime;
     }
 
-    public void setEstimatedTime(LocalDateTime estimatedTime) {
+    public void setEstimatedTime(Timestamp estimatedTime) {
         this.estimatedTime = estimatedTime;
     }
 
-    public LocalDateTime getSpentTime() {
+    public Timestamp getSpentTime() {
         return spentTime;
     }
 
-    public void setSpentTime(LocalDateTime spentTime) {
+    public void setSpentTime(Timestamp spentTime) {
         this.spentTime = spentTime;
     }
 

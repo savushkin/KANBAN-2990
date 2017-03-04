@@ -1,9 +1,4 @@
 package ru.ifmo.p3411.data;
-
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.id.enhanced.SequenceStyleGenerator;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -11,7 +6,7 @@ import java.util.Set;
 
 /**
  * @author Ellepsis
- * @since 1.0
+* @since 1.0
  */
 @Entity
 @Table(name = "board")
