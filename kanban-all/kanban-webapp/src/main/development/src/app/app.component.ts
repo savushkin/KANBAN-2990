@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
-import {KanbanUserService} from "./_service/kanban-user.service";
-import {KanbanUser} from "./_model/kanbanUser";
+import {KanbanUserService} from './_service/kanban-user.service';
+import {KanbanUser} from './_model/kanbanUser';
+import {BoardService} from './_service/board.service';
+import {Board} from './_model/board';
+import {BoardComponent} from "./_component/board/board.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [
-    KanbanUserService
+    KanbanUserService,
+    BoardService
   ]
 })
 export class AppComponent {
-  constructor(private kanbanUserService:KanbanUserService) {
-    // let kanbanUser = new KanbanUser;
-    // kanbanUser.firstName = 'firstName';
-    // kanbanUser.lastName = 'lastName';
-    // kanbanUser.secondName = 'secondName';
-    // kanbanUser.username = 'mishka1';
-    //
-    // this.kanbanUserService.create(kanbanUser).subscribe(resp => {
-    //   console.log(resp);
-    // })
+  boards:Board[];
+  currentBoard:Board;
+  constructor(private kanbanUserService:KanbanUserService, private boardService:BoardService) {
+    boardService.getPage(0, 999).subscribe(resp => {
+      this.boards = JSON.parse(resp['_body'])['_embedded']['boards'];
+      this.currentBoard = this.boards[0]||null;
+    });
   }
 }

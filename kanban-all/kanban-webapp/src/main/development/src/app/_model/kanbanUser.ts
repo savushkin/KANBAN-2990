@@ -4,4 +4,8 @@ export class KanbanUser {
   firstName:string;
   secondName:string;
   lastName:string;
+  _links:any;
+  constructor() {
+
+  }
 }

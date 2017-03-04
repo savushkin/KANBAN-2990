@@ -10,6 +10,7 @@ import { NavbarComponent } from './_component/navbar/navbar.component';
 import {HttpService} from "./_service/http.service";
 import {KanbanUserService} from "./_service/kanban-user.service";
 import { BoardComponent } from './_component/board/board.component';
+import {BoardService} from "./_service/board.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BoardComponent } from './_component/board/board.component';
   ],
   providers: [
     HttpService,
-    KanbanUserService
+    KanbanUserService,
+    BoardService
   ],
   bootstrap: [AppComponent]
 })

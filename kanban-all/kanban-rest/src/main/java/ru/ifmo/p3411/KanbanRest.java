@@ -1,6 +1,7 @@
 package ru.ifmo.p3411;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,7 +22,7 @@ import java.util.Date;
  * @since 1.0
  */
 @SpringBootApplication
-public class KanbanRest extends SpringBootServletInitializer {
+public class KanbanRest extends SpringBootServletInitializer implements CommandLineRunner {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

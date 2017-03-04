@@ -8,13 +8,18 @@ export const environment = {
   host: 'http://localhost:8080/',
   context: 'rest/',
   links: '',
-
   kanbanUsers: {
     all: 'kanbanUsers/',
     create: 'kanbanUsers/',
     one: 'kanbanUsers/',
     update: 'kanbanUsers/',
     delete: 'kanbanUsers/'
-
-  }
+  },
+  board: {
+    all: 'boards/',
+    create: 'boards/',
+    one: 'boards/',
+    update: 'boards/',
+    delete: 'boards/'
+  },
 };
