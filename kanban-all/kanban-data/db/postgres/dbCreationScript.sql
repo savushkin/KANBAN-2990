@@ -18,3 +18,17 @@ GRANT ALL ON DATABASE kanbandb TO postgres;
 GRANT ALL ON DATABASE kanbandb TO "kanbanJavaServerUser";
 
 GRANT TEMPORARY, CONNECT ON DATABASE kanbandb TO PUBLIC;
+
+
+CREATE DATABASE kanbandb
+WITH
+OWNER = postgres
+ENCODING = 'UTF8'
+TABLESPACE = pg_default
+CONNECTION LIMIT = -1;
+
+GRANT ALL ON DATABASE kanbandb TO postgres;
+
+GRANT ALL ON DATABASE kanbandb TO "kanbanJavaServerUser";
+
+GRANT TEMPORARY, CONNECT ON DATABASE kanbandb TO PUBLIC;

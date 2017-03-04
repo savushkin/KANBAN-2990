@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   host: 'http://localhost:8080/',
-  context: 'rest/',
+  context: '/',
   links: '',
   kanbanUsers: {
     all: 'kanbanUsers/',
