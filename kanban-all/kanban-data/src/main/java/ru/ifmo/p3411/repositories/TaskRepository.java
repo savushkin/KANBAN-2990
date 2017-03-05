@@ -20,4 +20,16 @@ public interface TaskRepository extends JpaRepository<Task, Long>, JpaSpecificat
     @Query(value = "select t from Task t " +
             "where t.boardColumn = :boardColumn")
     List<Task> getAllTaskByBoardColumn(@Param(value = "boardColumn") BoardColumn boardColumn);
+
+    @Query(value = "select t from Task t " +
+            "join fetch t.owner o " +
+            "where o.id = :ownerId")
+    List<Task> getAllTaskByOwnerId(@Param(value = "ownerId") Integer ownerId);
+
+    @Query(value = "select t from Task t " +
+            "join fetch t.owner o " +
+            "where o.id = :ownerId " +
+            "and t.title like '%'||:title||'%'")
+    List<Task> getAllOwnerTaskByTitle(@Param(value = "ownerId") Integer ownerId,
+                                      @Param(value = "title") String title);
 }
