@@ -16,7 +16,8 @@ import java.util.List;
  */
 @Repository
 public interface BoardColumnRepository extends JpaRepository<BoardColumn, Long>, JpaSpecificationExecutor<BoardColumn> {
-    @Query(value = "select b from BoardColumn b " +
+    @Query(value = "select b from " +
+            "BoardColumn b " +
             "where b.board = :board")
     List<BoardColumn> getAllBoardColumnForBoard(@Param(value = "board") Board board);
 }

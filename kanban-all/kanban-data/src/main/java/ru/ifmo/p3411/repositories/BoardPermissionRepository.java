@@ -12,4 +12,5 @@ import ru.ifmo.p3411.data.BoardPermission;
 @Repository
 public interface BoardPermissionRepository extends JpaRepository<BoardPermission, Integer>,
         JpaSpecificationExecutor<BoardPermission> {
+
 }
