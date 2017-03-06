@@ -5,15 +5,22 @@
 
 export const environment = {
   production: false,
-  host: 'http://localhost:8080/',
-  context: '/',
+  host: 'http://localhost:8081/',
+  context: '',
   links: '',
-  kanbanUsers: {
-    all: 'kanbanUsers/',
-    create: 'kanbanUsers/',
-    one: 'kanbanUsers/',
-    update: 'kanbanUsers/',
-    delete: 'kanbanUsers/'
+  boardPermission: {
+    all: 'boardPermissions/',
+    create: 'boardPermissions/',
+    one: 'boardPermissions/',
+    update: 'boardPermissions/',
+    delete: 'boardPermissions/'
+  },
+  systemUser: {
+    all: 'systemUsers/',
+    create: 'systemUsers/',
+    one: 'systemUsers/',
+    update: 'systemUsers/',
+    delete: 'systemUsers/'
   },
   board: {
     all: 'boards/',
@@ -22,4 +29,34 @@ export const environment = {
     update: 'boards/',
     delete: 'boards/'
   },
+  task: {
+    all: 'tasks/',
+    create: 'tasks/',
+    one: 'tasks/',
+    update: 'tasks/',
+    delete: 'tasks/',
+    getAllByColumn: 'tasks/search/getAllTaskByBoardColumn'
+  },
+  systemPermission: {
+    all: 'systemPermissions/',
+    create: 'systemPermissions/',
+    one: 'systemPermissions/',
+    update: 'systemPermissions/',
+    delete: 'systemPermissions/'
+  },
+  column: {
+    all: 'boardColumns/',
+    create: 'boardColumns/',
+    one: 'boardColumns/',
+    update: 'boardColumns/',
+    delete: 'boardColumns/',
+    getAllByBoard: 'boardColumns/search/getAllBoardColumnForBoard'
+  },
+  kanbanUser: {
+    all: 'kanbanUsers/',
+    create: 'kanbanUsers/',
+    one: 'kanbanUsers/',
+    update: 'kanbanUsers/',
+    delete: 'kanbanUsers/'
+  }
 };

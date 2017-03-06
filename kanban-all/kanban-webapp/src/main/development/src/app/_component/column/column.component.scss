@@ -1,0 +1,62 @@
+.kanban-col {
+  width: 300px;
+  margin-right: 20px;
+  float: left;
+  .panel-heading {
+    cursor: context-menu;
+    i {
+      cursor: pointer;
+    }
+  }
+  .kanban-centered {
+    position: relative;
+    margin-bottom: 30px;
+    &:before {
+      content: " ";
+      display: table;
+      content: '';
+      position: absolute;
+      display: block;
+      width: 2px;
+      top: 20px;
+      bottom: 20px;
+    }
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+  }
+}
+.modal-static {
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -100px;
+  margin-left: -100px;
+  overflow: visible !important;
+  width: 200px;
+  height: 150px;
+  .modal-dialog {
+    width: 200px;
+    height: 150px;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .modal-content {
+    width: 200px;
+    height: 150px;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+.panel-body {
+  height: 500px;
+  padding: 15px 0 0;
+  overflow-y: scroll;
+}
+.grab {
+}
+.grabbing {
+}

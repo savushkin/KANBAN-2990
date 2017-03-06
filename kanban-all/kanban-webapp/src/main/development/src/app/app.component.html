@@ -1,5 +1,5 @@
 <header>
-  <app-navbar></app-navbar>
+  <app-navbar [boards]="boards" (newBoardEvent)="handleNewBoard($event)"></app-navbar>
 </header>
 <main>
   <app-board [board]="currentBoard"></app-board>
