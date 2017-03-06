@@ -18,6 +18,6 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long>, JpaSpecificationExecutor<Task> {
     @Query(value = "select t from Task t " +
-            "where t.boardColumn = :boardColumn")
-    List<Task> getAllTaskByBoardColumn(@Param(value = "boardColumn") BoardColumn boardColumn);
+            "where t.boardColumn.id = :boardColumn")
+    List<Task> getAllTaskByBoardColumn(@Param(value = "boardColumn") Long boardColumn);
 }

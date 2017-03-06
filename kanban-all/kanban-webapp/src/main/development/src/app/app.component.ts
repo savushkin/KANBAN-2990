@@ -17,10 +17,15 @@ import {BoardComponent} from "./_component/board/board.component";
 export class AppComponent {
   boards:Board[];
   currentBoard:Board;
+
   constructor(private kanbanUserService:KanbanUserService, private boardService:BoardService) {
     boardService.getPage(0, 999).subscribe(resp => {
       this.boards = JSON.parse(resp['_body'])['_embedded']['boards'];
       this.currentBoard = this.boards[0]||null;
     });
+  }
+
+  handleNewBoard(board:Board) {
+    this.currentBoard = board;
   }
 }

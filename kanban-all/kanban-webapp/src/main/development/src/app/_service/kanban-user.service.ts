@@ -15,22 +15,22 @@ export class KanbanUserService {
     params.set('size', size.toString());
     if (sort)
       params.set('sort', sort);
-    return this.httpService.get(environment.kanbanUsers.all, {search: params});
+    return this.httpService.get(environment.kanbanUser.all, {search: params});
   }
 
   public create(kanbanUser:KanbanUser) {
-    return this.httpService.post(environment.kanbanUsers.create, kanbanUser, {});
+    return this.httpService.post(environment.kanbanUser.create, kanbanUser, {});
   }
 
   public one(id:number) {
-    return this.httpService.get(environment.kanbanUsers.one + id.toString(), {});
+    return this.httpService.get(environment.kanbanUser.one + id.toString(), {});
   }
 
   public update(id:number, kanbanUser:KanbanUser) {
-    return this.httpService.put(environment.kanbanUsers.update + id.toString(), kanbanUser, {});
+    return this.httpService.put(environment.kanbanUser.update + id.toString(), kanbanUser, {});
   }
 
   public remove(id:number) {
-    return this.httpService.put(environment.kanbanUsers.delete + id.toString(), {});
+    return this.httpService.put(environment.kanbanUser.delete + id.toString(), {});
   }
 }
