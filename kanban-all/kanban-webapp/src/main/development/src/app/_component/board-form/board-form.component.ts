@@ -18,7 +18,7 @@ export class BoardFormComponent implements OnInit {
   boardForm = this.fb.group({
     name: ["", Validators.required],
     description: ["", Validators.required],
-    owner: [KanbanUser, Validators.required],
+    owner: [1, Validators.required],
   });
 
   constructor(private fb:FormBuilder,
@@ -30,20 +30,25 @@ export class BoardFormComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   submit(event) {
-    console.log(event);
-    console.log(this.boardForm.value);
-    console.log(JSON.stringify(this.boardForm.value));
-    // const board:Board = new Board();
-    //
-    // board.boardUserPermissionSet = [];
-    // board.name = this.board.name;
-    // board.description = this.board.description;
-    // board.owner = this.board.owner;
-    //
-    // console.log(board);
+    this.kanbanUserService.one(this.boardForm.value.owner).subscribe(resp => {
+      const owner = JSON.parse(resp['_body']);
+      delete owner['_links'];
 
+      const board:Board = new Board();
+      board.boardUserPermissionSet = [];
+      board.creation_date = new Date().getTime();
+      board.name = this.boardForm.value.name;
+      board.description = this.boardForm.value.description;
+      board.owner = owner;
+
+      this.boardService.create(board).subscribe(createResultResp => {
+        console.log(createResultResp);
+      })
+
+    });
   }
 }

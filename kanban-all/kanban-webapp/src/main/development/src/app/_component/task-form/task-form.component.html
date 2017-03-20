@@ -1,0 +1,48 @@
+<a href="#" (click)="toggleModalCreate()">{{isNew?'Добавить задачу...':'Редактировать'}}</a>
+<form [formGroup]="taskForm" (ngSubmit)="submit($event)">
+  <div [ngClass]="{'show':isActive}" [ngStyle]="{'display': isActive?'block':'none'}" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Задача</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toggleModalCreate()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="task-title">Название задачи</label>
+            <input formControlName="title" type="text" class="form-control" id="task-title">
+          </div>
+          <div class="form-group">
+            <label for="task-description">Описание</label>
+            <textarea formControlName="description" class="form-control" id="task-description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="task-owner">Владелец</label>
+            <select formControlName="owner" class="form-control" id="task-owner">
+              <option *ngFor="let user of kanbanUsers" [value]="user['id']">{{user&&user['firstName']}} {{user&&user['secondName']}} {{user&&user['lastName']}}</option>
+            </select>
+          </div>
+          <!--<div class="form-group">-->
+            <!--<label for="task-taskUser">Подписанты</label>-->
+            <!--<select formControlName="taskUser" class="form-control" id="task-taskUser" multiple>-->
+              <!--<option *ngFor="let user of kanbanUsers" [value]="user['id']">{{user&&user['firstName']}} {{user&&user['secondName']}} {{user&&user['lastName']}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+          <div class="form-group">
+            <label for="task-column">Категория</label>
+            <select formControlName="column" class="form-control" id="task-column">
+              <option *ngFor="let column of columns" [value]="column['id']">{{column&&column['name']}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="toggleModalCreate()">Закрыть</button>
+          <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

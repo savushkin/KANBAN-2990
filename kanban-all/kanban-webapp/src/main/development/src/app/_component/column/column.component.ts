@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Input, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {Column} from "../../_model/column";
 import {TaskService} from "../../_service/task.service";
 import {Task} from "../../_model/task";
@@ -13,6 +13,10 @@ import {Task} from "../../_model/task";
 })
 export class ColumnComponent implements OnInit {
   @Input() column:Column = null;
+  @Input() columns:Column[] = null;
+
+  @Output() needReloadEvent = new EventEmitter();
+
   tasks:Task[] = null;
 
   constructor(private taskService:TaskService) {
@@ -28,5 +32,9 @@ export class ColumnComponent implements OnInit {
         this.tasks = JSON.parse(resp['_body'])['_embedded']['tasks'];
       })
     }
+  }
+
+  handleEditTaskEvent(event) {
+    this.needReloadEvent.emit(event);
   }
 }

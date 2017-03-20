@@ -20,6 +20,17 @@ export class BoardComponent implements OnInit, OnChanges {
     this.columnService = columnService;
   }
 
+  handleReloadNeededEvent(event) {
+    if(this.board) {
+      this.columnService.getAllColumnsByBoard(this.board).subscribe(resp => {
+        this.columns = JSON.parse(resp['_body'])['_embedded']['boardColumns'].map(column => {
+          delete column['_links'];
+          return column;
+        });
+      })
+    }
+  }
+
   ngOnInit() {
 
   }
@@ -27,7 +38,10 @@ export class BoardComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if(this.board && 'board' in changes) {
       this.columnService.getAllColumnsByBoard(this.board).subscribe(resp => {
-        this.columns = JSON.parse(resp['_body'])['_embedded']['boardColumns'];
+        this.columns = JSON.parse(resp['_body'])['_embedded']['boardColumns'].map(column => {
+          delete column['_links'];
+          return column;
+        });
       })
     }
   }

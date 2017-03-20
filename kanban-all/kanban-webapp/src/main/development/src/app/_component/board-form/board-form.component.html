@@ -10,7 +10,7 @@
   <div class="form-group">
     <label for="board-owner">Собственник</label>
     <select formControlName="owner" class="form-control" id="board-owner">
-      <option *ngFor="let user of kanbanUsers" value="{{user}}">{{user&&user['firstName']}} {{user&&user['secondName']}} {{user&&user['lastName']}}</option>
+      <option *ngFor="let user of kanbanUsers" [value]="user['id']">{{user&&user['firstName']}} {{user&&user['secondName']}} {{user&&user['lastName']}}</option>
     </select>
   </div>
 

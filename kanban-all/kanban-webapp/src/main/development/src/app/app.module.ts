@@ -15,6 +15,9 @@ import { ColumnComponent } from './_component/column/column.component';
 import {ColumnService} from "./_service/column.service";
 import { TaskComponent } from './_component/task/task.component';
 import { BoardFormComponent } from './_component/board-form/board-form.component';
+import { ColumnFormComponent } from './_component/column-form/column-form.component';
+import { TaskFormComponent } from './_component/task-form/task-form.component';
+import {TaskService} from "./_service/task.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { BoardFormComponent } from './_component/board-form/board-form.component
     BoardComponent,
     ColumnComponent,
     TaskComponent,
-    BoardFormComponent
+    BoardFormComponent,
+    ColumnFormComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { BoardFormComponent } from './_component/board-form/board-form.component
     HttpService,
     KanbanUserService,
     BoardService,
-    ColumnService
+    ColumnService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })

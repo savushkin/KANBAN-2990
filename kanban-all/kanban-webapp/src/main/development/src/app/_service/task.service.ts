@@ -32,7 +32,7 @@ export class TaskService {
   }
 
   public remove(id:number) {
-    return this.httpService.put(environment.task.delete + id.toString(), {});
+    return this.httpService.remove(environment.task.delete + id.toString(), {});
   }
 
   public getAllByColumn(column:Column) {

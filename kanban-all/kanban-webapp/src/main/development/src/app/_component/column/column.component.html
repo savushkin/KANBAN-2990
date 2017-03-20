@@ -5,10 +5,10 @@
   </div>
   <div class="panel-body">
     <div class="kanban-centered">
-      <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+      <app-task *ngFor="let task of tasks" [column]="column" [columns]="columns" [task]="task" (removeTaskEvent)="handleEditTaskEvent($event)"></app-task>
     </div>
   </div>
   <div class="panel-footer">
-    <!--<a href="#">Add a card...</a>-->
+    <app-task-form [isNew]="true" [columns]="columns" (saveTaskEvent)="handleEditTaskEvent($event)" [column]="column"></app-task-form>
   </div>
 </div>

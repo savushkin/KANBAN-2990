@@ -24,17 +24,17 @@ export const environment = {
   },
   board: {
     all: 'boards/',
-    create: 'boards/',
+    create: 'boards/addNew',
     one: 'boards/',
     update: 'boards/',
     delete: 'boards/'
   },
   task: {
     all: 'tasks/',
-    create: 'tasks/',
-    one: 'tasks/',
-    update: 'tasks/',
-    delete: 'tasks/',
+    create: 'tasks/addNew',
+    one: 'tasks/info/',
+    update: 'tasks/save/',
+    delete: 'tasks/remove/',
     getAllByColumn: 'tasks/search/getAllTaskByBoardColumn'
   },
   systemPermission: {
@@ -46,7 +46,7 @@ export const environment = {
   },
   column: {
     all: 'boardColumns/',
-    create: 'boardColumns/',
+    create: 'boardColumns/addNew',
     one: 'boardColumns/',
     update: 'boardColumns/',
     delete: 'boardColumns/',

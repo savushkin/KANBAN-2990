@@ -42,7 +42,7 @@ public class Task {
     @JoinColumn(name = "board_column_id", nullable = false)
     private BoardColumn boardColumn;
 
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private Set<TaskUser> taskUser;
 
     public Task() {

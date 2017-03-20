@@ -16,7 +16,7 @@ import java.util.List;
  * @since 1.0
  */
 @Repository
-public interface TaskRepository extends JpaRepository<Task, Long>, JpaSpecificationExecutor<Task> {
+public interface TaskRepository extends JpaRepository<Task, Integer>, JpaSpecificationExecutor<Task> {
     @Query(value = "select t from Task t " +
             "where t.boardColumn.id = :boardColumn")
     List<Task> getAllTaskByBoardColumn(@Param(value = "boardColumn") Long boardColumn);
@@ -32,5 +32,6 @@ public interface TaskRepository extends JpaRepository<Task, Long>, JpaSpecificat
             "and t.title like '%'||:title||'%'")
     List<Task> getAllOwnerTaskByTitle(@Param(value = "ownerId") Integer ownerId,
                                       @Param(value = "title") String title);
+
 
 }

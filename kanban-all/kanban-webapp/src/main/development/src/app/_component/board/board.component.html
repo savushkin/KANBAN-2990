@@ -1,5 +1,7 @@
 <div class="container">
+
   <!--<app-board-form></app-board-form>-->
+  <!--<app-column-form></app-column-form>-->
   <h5 class="h5">{{board&&board['description']}}</h5>
-  <app-column *ngFor="let column of columns" [column]="column"></app-column>
+  <app-column (needReloadEvent)="handleReloadNeededEvent($event)" *ngFor="let column of columns" [columns]="columns" [column]="column"></app-column>
 </div>

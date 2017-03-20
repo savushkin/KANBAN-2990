@@ -3,6 +3,10 @@
     <div class="kanban-label">
       <h2><a href="#">{{task&&task['title']}}</a></h2>
       <blockquote>{{task&&task['description']}}</blockquote>
+      <app-task-form [isNew]="false" [task]="taskForEdit" (saveTaskEvent)="handleEditTaskEvent($event)" [columns]="columns" [column]="column"></app-task-form>
+      <a class="kanban-remove text-danger" (click)="removeTask(task);">
+        &#10005;
+      </a>
     </div>
   </div>
 </article>
